@@ -5,8 +5,18 @@ header{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 50%;
     margin-left: 25%;
-    margin-top: 75px;
+    margin-top: 50px;
     height: 100px;
     line-height: 100px;
+    border: solid;
+
 }
 
+.container {
+    text-align: center;
+    border: solid;
+    line-height: 2;
+    width: 50%;
+    margin-top: 10px;
+    margin-left: 25%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
