@@ -32,3 +32,22 @@ document.getElementById("currentword").innerHTML=answer;
 let guessesRemaining = 15;
 
 document.getElementById("remainingguesses").innerHTML = guessesRemaining;
+
+
+// functions
+
+function updateScore() {
+    document.querySelector("#wins").innerHTML = "Wins: " + score;
+  }
+
+// Process
+
+document.onkeyup = function(event) {
+
+    var letter = String.fromCharCode(event.which).toLowerCase();
+
+    if(letter === "");
+    console.log(letter)
+
+
+}
