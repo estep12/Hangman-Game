@@ -41,13 +41,16 @@ function updateScore() {
   }
 
 // Process
-
 document.onkeyup = function(event) {
-
+    for (let i = 0; i<randomWord.length; i++){
     var letter = String.fromCharCode(event.which).toLowerCase();
+    console.log(letter);
 
-    if(letter === "");
-    console.log(letter)
-
-
+    if(letter === answer[i]);{
+        var key = document.getElementById("currentword").innerHTML;
+        var replaceLetter = key.replace("_",letter);
+        document.getElementById("currentword").innerHTML = replaceLetter;
+    }
+    
+    }
 }
