@@ -23,11 +23,11 @@ console.log(randomWord);
 
 var answer = [];
 for (let i = 0; i<randomWord.length; i++) {
-    answer[i] = "_";
+    answer[i] = "  _  ";
 }
 let remainingLength = randomWord.length;
 
-document.getElementById("currentword").innerHTML=answer;
+document.getElementById("currentword").innerHTML=answer.join("");
 
 let guessesRemaining = 15;
 
