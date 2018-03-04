@@ -1,11 +1,17 @@
 // function resetGame(){
 
 // }
+// function resetGame(remainingLength = 0){
+//     resetUI();
+//     randomWord = document.getElementById("currentword").innerHTML=answerArray.join("");
+//     guessesRemaining = 15;
 
-let wins = 0;
+// }
 
-document.getElementById("wins").innerHTML=wins;
 
+
+
+//Arrays
 
 var words = [
     "monkey",
@@ -16,38 +22,51 @@ var words = [
     "lizard"
 ];
 
-
-var randomWord = words[Math.floor(Math.random() * words.length)];
-
-console.log(randomWord);
-
-
 var answerArray = [];
-for (let i = 0; i<randomWord.length; i++) {
-    answerArray[i] = "  _  ";
-}
+var wrongLetter = []; 
+
+//Variables for game 
+var wins = 0;
+var randomWord = words[Math.floor(Math.random() * words.length)];
+var guessesRemaining = 15;
 var remainingLength = randomWord.length;
 
 
 
+for (let i = 0; i<randomWord.length; i++) {
+    answerArray[i] = "  _  ";
+}
 document.getElementById("currentword").innerHTML=answerArray.join("");
-
-var guessesRemaining = 15;
-
 document.getElementById("remainingguesses").innerHTML = guessesRemaining;
-console.log(guessesRemaining);
+document.getElementById("wins").innerHTML=wins;
+document.getElementById("guessedletters").innerHTML=wrongLetter.join(" ");
 
+//Console logs
+console.log(randomWord);
+console.log(guessesRemaining);
 
 // functions
 
+function startGame(){
+    randomWord;
+    answerArray;
+    randomWord.length;    
+}
 
+function resetGame(){
+    guessesRemaining;
+    
+}
 
+//Process
+
+startGame();
 
     document.onkeypress = function(event) {
         var letter = String.fromCharCode(event.which).toLowerCase();
         guessesRemaining --;
         document.getElementById("remainingguesses").innerHTML = guessesRemaining;
-      
+
         for (let j = 0; j<randomWord.length; j++){
         
             if(randomWord[j] === letter) {
@@ -58,28 +77,19 @@ console.log(guessesRemaining);
                 if (remainingLength === 0) {
                     wins++;
                     document.getElementById("wins").innerHTML=wins;
-                    if(remainingLength === 0){
-                        break;
-                    }
                 }
-            } 
+            } else {
+                wrongLetter.push(letter);
+                document.getElementById("guessedletters").innerHTML=wrongLetter.join(" ");
 
-            
+                // console.log(wrongLetter);
 
-            if (j+1 === randomWord.length){
-                // answerArray.length != letter;
-                var missedLetter = document.getElementById("guessedletters").innerHTML;
-                var wrongLetter = missedLetter.replace(' ', missedLetter);
-                document.getElementById("guessedletters").innerHTML = wrongLetter;
-                // alert('ur  gay');
-
-
-            // }
                 
-                
-        
+            }
+
+            resetGame;    
         }
 
     }
 
-    }
+    
