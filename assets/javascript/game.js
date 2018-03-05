@@ -77,9 +77,12 @@ function gameReset(){
     if(lettersInWord.toString() === answerArray.toString()) {
         wins++;
         document.getElementById("wins").innerHTML = wins;
+        
+        alert("WINNER WINNER CHICKEN DINNER")
         startGame();
 
     } else if (guessesRemaining === 0){
+        alert ("Sorry, you lost")
         startGame();
     }
 }
