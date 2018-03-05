@@ -11,23 +11,14 @@ var words = [
 ];
 
 var answerArray = [];
-var wrongLetter = [""]; 
+var wrongLetter = []; 
+var lettersInWord = [];
 
 //Variables for game 
 var wins = 0;
 var randomWord = words[Math.floor(Math.random() * words.length)];
 var guessesRemaining = 15;
-var remainingLength = randomWord.length;
-
-
-
-for (let i = 0; i<randomWord.length; i++) {
-    answerArray.push("  _  ");
-}
-document.getElementById("currentword").innerHTML=answerArray.join("");
-document.getElementById("remainingguesses").innerHTML = guessesRemaining;
-document.getElementById("wins").innerHTML=wins;
-document.getElementById("guessedletters").innerHTML=wrongLetter.join(" ");
+var remainingLength = 0;
 
 //Console logs
 console.log(randomWord);
@@ -38,47 +29,69 @@ console.log(guessesRemaining);
 function startGame(){
     randomWord;
     answerArray;
-    randomWord.length;  
+    lettersInWord = randomWord.split("");
+    remainingLength = lettersInWord.length; 
     guessesRemaining;
+
+    for (let i = 0; i<remainingLength; i++) {
+        answerArray.push("  _  ");
+    }
+
+    document.getElementById("currentword").innerHTML=answerArray.join("");
+    document.getElementById("remainingguesses").innerHTML = guessesRemaining;
+    document.getElementById("wins").innerHTML=wins;
+    document.getElementById("guessedletters").innerHTML=wrongLetter.join(" ");
 
 }
 
-// function resetGame(){
-    
-    
-// }
+function availableLetters(letters){
+
+    var isInWord = false;
+
+    for (let j = 0; j < remainingLength; j++) {
+        if(randomWord[j] === letters) {
+            isInWord = true;
+        }
+    }
+
+
+    if(isInWord) {  
+        for (let l = 0; l < remainingLength; l++){
+            if(randomWord[l] === letters) {
+                answerArray[l] = letters; 
+        }
+    }  
+} else {
+        wrongLetter.push(letters);
+        guessesRemaining--;
+}
+}
+
+
+function gameReset(){
+
+    document.getElementById("currentword").innerHTML=answerArray.join("");
+    document.getElementById("remainingguesses").innerHTML = guessesRemaining;
+    document.getElementById("guessedletters").innerHTML=wrongLetter.join(" ");
+
+    if(lettersInWord.toString() === answerArray.toString()) {
+        wins++;
+        document.getElementById("wins").innerHTML = wins;
+        startGame();
+
+    } else if (guessesRemaining === 0){
+        startGame();
+    }
+}
 
 //Process
 
 startGame();
-    document.onkeypress = function(event) {
+document.onkeypress = function(event) {
         var letter = String.fromCharCode(event.keyCode).toLowerCase();
-        guessesRemaining --;
-        document.getElementById("remainingguesses").innerHTML = guessesRemaining;
+        availableLetters(letter);
+        gameReset();
+}
+ 
 
-        for (let j = 0; j<randomWord.length; j++){
         
-            if(randomWord[j] === letter) {
-                answerArray[j] = letter;
-                document.getElementById("currentword").innerHTML=answerArray.join("")
-                remainingLength--; 
-                console.log(remainingLength);
-                if (remainingLength === 0) {
-                    wins++;
-                    document.getElementById("wins").innerHTML=wins;
-                    document.location.reload();
-                }
-            } else  {
-                wrongLetter.push(letter);
-                document.getElementById("guessedletters").innerHTML=wrongLetter.join("");
-                console.log(wrongLetter);
-
-                
-            }
-
-           
-        }
-        
-    }
-
-    
