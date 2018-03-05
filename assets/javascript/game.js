@@ -1,15 +1,3 @@
-// function resetGame(){
-
-// }
-// function resetGame(remainingLength = 0){
-//     resetUI();
-//     randomWord = document.getElementById("currentword").innerHTML=answerArray.join("");
-//     guessesRemaining = 15;
-
-// }
-
-
-
 
 //Arrays
 
@@ -23,7 +11,7 @@ var words = [
 ];
 
 var answerArray = [];
-var wrongLetter = []; 
+var wrongLetter = [""]; 
 
 //Variables for game 
 var wins = 0;
@@ -34,7 +22,7 @@ var remainingLength = randomWord.length;
 
 
 for (let i = 0; i<randomWord.length; i++) {
-    answerArray[i] = "  _  ";
+    answerArray.push("  _  ");
 }
 document.getElementById("currentword").innerHTML=answerArray.join("");
 document.getElementById("remainingguesses").innerHTML = guessesRemaining;
@@ -50,20 +38,21 @@ console.log(guessesRemaining);
 function startGame(){
     randomWord;
     answerArray;
-    randomWord.length;    
+    randomWord.length;  
+    guessesRemaining;
+
 }
 
-function resetGame(){
-    guessesRemaining;
+// function resetGame(){
     
-}
+    
+// }
 
 //Process
 
 startGame();
-
     document.onkeypress = function(event) {
-        var letter = String.fromCharCode(event.which).toLowerCase();
+        var letter = String.fromCharCode(event.keyCode).toLowerCase();
         guessesRemaining --;
         document.getElementById("remainingguesses").innerHTML = guessesRemaining;
 
@@ -77,19 +66,19 @@ startGame();
                 if (remainingLength === 0) {
                     wins++;
                     document.getElementById("wins").innerHTML=wins;
+                    document.location.reload();
                 }
-            } else {
+            } else  {
                 wrongLetter.push(letter);
-                document.getElementById("guessedletters").innerHTML=wrongLetter.join(" ");
-
-                // console.log(wrongLetter);
+                document.getElementById("guessedletters").innerHTML=wrongLetter.join("");
+                console.log(wrongLetter);
 
                 
             }
 
-            resetGame;    
+           
         }
-
+        
     }
 
     

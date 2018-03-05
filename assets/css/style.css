@@ -1,5 +1,8 @@
+body{
+    background-image: url(../images/jungle2.jpg)
+}
 header{
-    background-color: aquamarine;
+    background-color: black;
     text-align: center;
     font-size: 50px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -9,6 +12,8 @@ header{
     height: 100px;
     line-height: 100px;
     border: solid;
+    border-color: black;
+    color: beige;
 
 }
 
@@ -20,3 +25,5 @@ header{
     margin-top: 10px;
     margin-left: 25%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: beige;
+}
