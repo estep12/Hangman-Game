@@ -27,11 +27,12 @@ console.log(guessesRemaining);
 // functions
 
 function startGame(){
-    randomWord;
-    answerArray;
+    randomWord = words[Math.floor(Math.random() * words.length)];
+    wrongLetter = [];
+    answerArray = [];
     lettersInWord = randomWord.split("");
     remainingLength = lettersInWord.length; 
-    guessesRemaining;
+    guessesRemaining = 15;
 
     for (let i = 0; i<remainingLength; i++) {
         answerArray.push("  _  ");
@@ -77,7 +78,6 @@ function gameReset(){
     if(lettersInWord.toString() === answerArray.toString()) {
         wins++;
         document.getElementById("wins").innerHTML = wins;
-        
         alert("WINNER WINNER CHICKEN DINNER")
         startGame();
 
